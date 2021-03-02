@@ -1,0 +1,39 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+    kotlin("jvm")
+    application
+}
+
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions.jvmTarget = "11"
+
+repositories {
+    maven { url = uri("https://www.macrofocus.com/archiva/repository/public/") }
+    maven { url = uri("https://www.macrofocus.com/archiva/repository/snapshots/") }
+    mavenCentral()
+}
+
+val frameworkAttribute = Attribute.of("mkui", String::class.java)
+configurations.all {
+    afterEvaluate {
+        attributes.attribute(frameworkAttribute, "swing")
+    }
+}
+
+dependencies {
+    val macrofocusVersion: String by project
+//    implementation("org.macrofocus", "macrofocus-common", "$macrofocusVersion", "jvmRuntime")
+//    implementation("org.molap", "molap", "$macrofocusVersion", "jvmRuntime")
+//    implementation("org.macrofocus", "mkui", "$macrofocusVersion", "swingRuntime")
+//    implementation("com.treemap", "treemap", "$macrofocusVersion", "swingRuntime")
+
+    implementation("org.macrofocus:macrofocus-common:$macrofocusVersion")
+    implementation("org.molap:molap:$macrofocusVersion")
+    implementation("org.macrofocus:mkui:$macrofocusVersion")
+    implementation("com.treemap:treemap:$macrofocusVersion")
+}
+
+application {
+    mainClass.set("Demo")
+}
