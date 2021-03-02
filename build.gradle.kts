@@ -37,3 +37,17 @@ dependencies {
 application {
     mainClass.set("Demo")
 }
+
+distributions {
+    main {
+//        distributionBaseName.set("someName")
+        contents {
+//            from("TreeMap API for Kotlin-Swing Developer Guide.pdf")
+        }
+
+        contents {
+            from("../treemap/build/dokka/html/")
+            into("dokka")
+        }
+    }
+}
