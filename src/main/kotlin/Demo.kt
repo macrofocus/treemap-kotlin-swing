@@ -55,6 +55,7 @@ object Demo {
         companySettings.setLabelingResizeTextToFitShape(true)
         companySettings.setLabelingVerticalAlignment(EnhancedLabel.CENTER)
         companySettings.setLabelingHorizontalAlignment(EnhancedLabel.CENTER)
+
         val configuration = createConfiguration(model, settings)
         val splitPane = JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, configuration, treeMap.component.nativeComponent)
         val mainPanel = JPanel(BorderLayout())
