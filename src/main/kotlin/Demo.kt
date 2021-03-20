@@ -25,8 +25,8 @@ object Demo {
     fun main(args: Array<String>) {
         setLicenseKey("My Company", "ABC12-ABC12-ABC12-ABC12-ABC12-ABC12")
 
-        val json = String(Demo::class.java.getResourceAsStream("Forbes Global 2000 - 2020.json").readAllBytes(), Charset.forName("UTF-8"))
-        val dataFrame: DataFrame<Int, String, Any?> = JsonDataFrame(json)
+        val inputStream = Demo::class.java.getResourceAsStream("Forbes Global 2000 - 2020.json")
+        val dataFrame: DataFrame<Int, String, Any?> = JsonDataFrame.fromInputStream(inputStream)
         val treeMap: AbstractTreeMap<Int, String> = DefaultTreeMap(dataFrame)
         val model = treeMap.model
         val settings = model!!.settings

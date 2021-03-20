@@ -1,12 +1,22 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.util.Properties
 
 plugins {
     kotlin("jvm")
     application
 }
 
+val local = Properties()
+val localProperties: File = rootProject.file("local.properties")
+if (localProperties.exists()) {
+    localProperties.inputStream().use { local.load(it) }
+}
+val jdk8Home = local["jdk8Home"] as String?
 val compileKotlin: KotlinCompile by tasks
-compileKotlin.kotlinOptions.jvmTarget = "11"
+compileKotlin.kotlinOptions.jvmTarget = "1.8"
+if (jdk8Home != null) {
+    compileKotlin.kotlinOptions.jdkHome = jdk8Home
+}
 
 repositories {
     maven { url = uri("https://www.macrofocus.com/archiva/repository/public/") }
