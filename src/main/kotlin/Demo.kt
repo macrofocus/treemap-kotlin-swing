@@ -35,13 +35,13 @@ object Demo {
         settings.setRendering(FLAT)
 
         // Group by
-        settings.setGroupByByNames("Sector", "Industry")
+        settings.groupByColumns = listOf("Sector", "Industry")
 
         // Size
-        settings.setSizeByName("Market Value")
+        settings.sizeColumn = "Market Value"
 
         // Color
-        settings.setColorByName("Profits")
+        settings.colorColumn = "Profits"
         val profitsSettings = settings.getColumnSettings("Profits")
         val negpos = PaletteFactory()["negpos"]!!.getPalette()
         val colorMap = model.getColorMap("Profits")
