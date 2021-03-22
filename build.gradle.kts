@@ -52,6 +52,10 @@ distributions {
     main {
 //        distributionBaseName.set("someName")
         contents {
+            from(".") {
+                exclude("build/**")
+            }
+
 //            from("TreeMap API for Kotlin-Swing Developer Guide.pdf")
             from("../treemap/build/dokka/html/") {
                 into("dokka")
