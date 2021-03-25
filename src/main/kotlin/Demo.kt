@@ -1,6 +1,5 @@
 import com.treemap.*
 import com.treemap.RenderingFactory.Companion.FLAT
-import com.treemap.RenderingFactory.Companion.getInstance
 import com.treemap.TreeMap.Companion.setLicenseKey
 import org.mkui.colormap.MutableColorMap
 import org.mkui.font.CPFont
@@ -128,7 +127,7 @@ object Demo {
 
     private fun createRenderingComboBox(settings: TreeMapSettings<String>): JComboBox<Rendering?> {
         val renderingComboBox: JComboBox<Rendering?> =
-            object : JComboBox<Rendering?>(SingleSelectionComboBoxModel(settings.getRenderingSelection(), getInstance().getRenderings())) {
+            object : JComboBox<Rendering?>(SingleSelectionComboBoxModel(settings.renderingSelection, RenderingFactory.instance.getRenderings())) {
                 override fun getMaximumSize(): Dimension {
                     return super.getPreferredSize()
                 }
