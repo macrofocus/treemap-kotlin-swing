@@ -32,7 +32,7 @@ object Demo {
         val settings = model!!.settings
 
         // General
-        settings.setRendering(FLAT)
+        settings.rendering = FLAT
 
         // Group by
         settings.groupByColumns = listOf("Sector", "Industry")
