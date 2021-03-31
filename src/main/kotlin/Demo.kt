@@ -1,10 +1,8 @@
 import com.treemap.*
 import com.treemap.RenderingFactory.Companion.FLAT
 import com.treemap.TreeMap.Companion.setLicenseKey
-import org.mkui.colormap.MutableColorMap
-import org.mkui.font.CPFont
+import org.mkui.font.MkFont
 import org.mkui.labeling.EnhancedLabel
-import org.mkui.palette.FixedPalette
 import org.mkui.palette.PaletteFactory
 import org.mkui.swing.HierarchicalComboBox
 import org.mkui.swing.Orientation
@@ -15,7 +13,6 @@ import java.awt.BorderLayout
 import java.awt.Dimension
 import java.awt.Font
 import java.io.IOException
-import java.nio.charset.Charset
 import javax.swing.*
 
 object Demo {
@@ -49,7 +46,7 @@ object Demo {
 
         // Label
         val companySettings = settings.getColumnSettings("Company")
-        companySettings.setLabelingFont(CPFont(Font("Helvetica", Font.PLAIN, 9))) // 9 points is the minimum size that will be displayed
+        companySettings.setLabelingFont(MkFont(Font("Helvetica", Font.PLAIN, 9))) // 9 points is the minimum size that will be displayed
         companySettings.setLabelingMinimumCharactersToDisplay(5)
         companySettings.setLabelingResizeTextToFitShape(true)
         companySettings.setLabelingVerticalAlignment(EnhancedLabel.CENTER)
