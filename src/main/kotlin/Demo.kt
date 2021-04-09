@@ -40,7 +40,7 @@ object Demo {
         // Color
         settings.colorColumn = "Profits"
         val profitsSettings = settings.getColumnSettings("Profits")
-        val negpos = PaletteFactory()["negpos"]!!.getPalette()
+        val negpos = PaletteFactory.instance["negpos"]!!.getPalette()
         val colorMap = model.getColorMap("Profits")
         colorMap!!.palette = negpos
         colorMap.interval!!.setValue(-88.205, 176.41)
