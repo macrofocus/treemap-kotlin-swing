@@ -1,7 +1,6 @@
 import com.treemap.*
 import com.treemap.RenderingFactory.Companion.FLAT
 import com.treemap.TreeMap.Companion.setLicenseKey
-import org.mkui.font.MkFont
 import org.mkui.font.crossplatform.CPFont
 import org.mkui.labeling.EnhancedLabel
 import org.mkui.palette.PaletteFactory
@@ -52,6 +51,8 @@ object Demo {
         companySettings.setLabelingResizeTextToFitShape(true)
         companySettings.setLabelingVerticalAlignment(EnhancedLabel.CENTER)
         companySettings.setLabelingHorizontalAlignment(EnhancedLabel.CENTER)
+
+        treeMap.view!!.isShowTiming = false
 
         val configuration = createConfiguration(model, settings)
         val splitPane = JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, configuration, treeMap.component.nativeComponent)
