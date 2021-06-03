@@ -1,4 +1,5 @@
 import com.treemap.*
+import com.treemap.AlgorithmFactory.Companion.getInstance
 import com.treemap.RenderingFactory.Companion.FLAT
 import com.treemap.TreeMap.Companion.setLicenseKey
 import org.mkui.font.crossplatform.CPFont
@@ -73,6 +74,7 @@ object Demo {
         configuration.add(createGroupBy(Orientation.Vertical, model, settings))
         configuration.add(createSizeComboBox(model, settings))
         configuration.add(createColorComboBox(model, settings))
+        configuration.add(createAlgorithmComboBox(settings.getDefaultColumnSettings()))
         configuration.add(createRenderingComboBox(settings))
         configuration.add(Box.createGlue())
         return configuration
@@ -122,6 +124,18 @@ object Demo {
         sizeComboBox.border = BorderFactory.createTitledBorder("Size")
         sizeComboBox.alignmentX = 0f
         return sizeComboBox
+    }
+
+    private fun createAlgorithmComboBox(settings: TreeMapColumnSettings): JComboBox<Algorithm> {
+        val algorithmComboBox: JComboBox<Algorithm> =
+            object : JComboBox<Algorithm>(SingleSelectionComboBoxModel(settings.getAlgorithmProperty(), getInstance().getAlgorithms())) {
+                override fun getMaximumSize(): Dimension {
+                    return super.getPreferredSize()
+                }
+            }
+        algorithmComboBox.border = BorderFactory.createTitledBorder("Algorithm")
+        algorithmComboBox.alignmentX = 0f
+        return algorithmComboBox
     }
 
     private fun createRenderingComboBox(settings: TreeMapSettings<String>): JComboBox<Rendering?> {
