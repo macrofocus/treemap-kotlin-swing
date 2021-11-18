@@ -22,7 +22,10 @@ repositories {
     maven { url = uri("https://www.macrofocus.com/archiva/repository/public/") }
     maven { url = uri("https://www.macrofocus.com/archiva/repository/snapshots/") }
     mavenCentral()
-    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+
+    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev/")
+
+    google()
 }
 
 val frameworkAttribute = Attribute.of("mkui", String::class.java)
