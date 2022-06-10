@@ -11,8 +11,8 @@ plugins {
 //    localProperties.inputStream().use { local.load(it) }
 //}
 //val jdk8Home = local["jdk8Home"] as String?
-val compileKotlin: KotlinCompile by tasks
-compileKotlin.kotlinOptions.jvmTarget = "1.8"
+//val compileKotlin: KotlinCompile by tasks
+// kotlinOptions.jvmTarget = "1.8"
 //if (jdk8Home != null) {
 //    compileKotlin.kotlinOptions.jdkHome = jdk8Home
 //}
