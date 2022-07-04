@@ -1,7 +1,6 @@
 import com.treemap.*
 import com.treemap.AlgorithmFactory.Companion.getInstance
 import com.treemap.RenderingFactory.Companion.FLAT
-import com.treemap.TreeMap.Companion.setLicenseKey
 import org.mkui.font.crossplatform.CPFont
 import org.mkui.labeling.EnhancedLabel
 import org.mkui.palette.PaletteFactory
@@ -20,7 +19,7 @@ object Demo {
     @Throws(IOException::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        setLicenseKey("My Company", "ABC12-ABC12-ABC12-ABC12-ABC12-ABC12")
+//        setLicenseKey("My Company", "ABC12-ABC12-ABC12-ABC12-ABC12-ABC12")
 
         val inputStream = Demo::class.java.getResourceAsStream("Forbes Global 2000 - 2021.json")
         val dataFrame: DataFrame<Int, String, Any?> = JsonDataFrame.fromInputStream(inputStream)

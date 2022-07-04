@@ -35,16 +35,19 @@ configurations.all {
 }
 
 dependencies {
-    val macrofocusVersion: String by project
-//    implementation("org.macrofocus", "macrofocus-common", "$macrofocusVersion", "jvmRuntime")
-//    implementation("org.molap", "molap", "$macrofocusVersion", "jvmRuntime")
-//    implementation("org.macrofocus", "mkui", "$macrofocusVersion", "swingRuntime")
-//    implementation("com.treemap", "treemap", "$macrofocusVersion", "swingRuntime")
-
-    implementation("org.macrofocus:macrofocus-common:$macrofocusVersion")
-    implementation("org.molap:molap:$macrofocusVersion")
-    implementation("org.macrofocus:mkui:$macrofocusVersion")
-    implementation("com.treemap:treemap:$macrofocusVersion")
+    val localDependencies: String? by project
+    if(localDependencies != null && localDependencies.toBoolean()) {
+        implementation(project(":macrofocus-common"))
+        implementation(project(":molap"))
+        implementation(project(":mkui"))
+        implementation(project(":treemap"))
+    } else {
+        val macrofocusVersion: String by project
+        implementation("org.macrofocus:macrofocus-common:$macrofocusVersion")
+        implementation("org.molap:molap:$macrofocusVersion")
+        implementation("org.macrofocus:mkui:$macrofocusVersion")
+        implementation("com.treemap:treemap:$macrofocusVersion")
+    }
 }
 
 application {
