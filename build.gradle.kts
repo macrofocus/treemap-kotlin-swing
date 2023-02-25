@@ -10,12 +10,6 @@ plugins {
 //if (localProperties.exists()) {
 //    localProperties.inputStream().use { local.load(it) }
 //}
-//val jdk8Home = local["jdk8Home"] as String?
-//val compileKotlin: KotlinCompile by tasks
-// kotlinOptions.jvmTarget = "1.8"
-//if (jdk8Home != null) {
-//    compileKotlin.kotlinOptions.jdkHome = jdk8Home
-//}
 
 repositories {
     maven { url = uri("https://www.macrofocus.com/archiva/repository/public/") }
