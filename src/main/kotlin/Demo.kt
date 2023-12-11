@@ -52,7 +52,7 @@ object Demo {
         companySettings.setLabelingVerticalAlignment(EnhancedLabel.CENTER)
         companySettings.setLabelingHorizontalAlignment(EnhancedLabel.CENTER)
 
-        treeMap.view!!.isShowTiming = false
+        treeMap.view!!.isShowTiming = true
 
         val configuration = createConfiguration(model, settings)
         val splitPane = JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, configuration, treeMap.component.nativeComponent)

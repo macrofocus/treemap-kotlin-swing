@@ -19,6 +19,11 @@ repositories {
     google()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 val frameworkAttribute = Attribute.of("mkui", String::class.java)
 configurations.all {
     afterEvaluate {
