@@ -85,7 +85,7 @@ object Demo {
         settings: TreeMapSettings<String>
     ): HierarchicalComboBox<String> {
         val groupBy: HierarchicalComboBox<String> =
-            object : HierarchicalComboBox<String>(orientation, settings.getGroupByFieldsSelection(), model!!.groupByTreeMapColumns) {
+            object : HierarchicalComboBox<String>(orientation, settings.getGroupByColumnsSelection(), model!!.groupByColumns) {
                 override fun getMaximumSize(): Dimension {
                     return super.getPreferredSize()
                 }
@@ -100,7 +100,7 @@ object Demo {
         settings: TreeMapSettings<String>
     ): JComboBox<String?> {
         val sizeComboBox: JComboBox<String?> =
-            object : JComboBox<String?>(SingleSelectionComboBoxModel(settings.getSizeFieldSelection(), model!!.sizeTreeMapColumns)) {
+            object : JComboBox<String?>(SingleSelectionComboBoxModel(settings.getSizeColumnSelection(), model!!.sizeColumns)) {
                 override fun getMaximumSize(): Dimension {
                     return super.getPreferredSize()
                 }
@@ -115,7 +115,7 @@ object Demo {
         settings: TreeMapSettings<String>
     ): JComboBox<String?> {
         val sizeComboBox: JComboBox<String?> =
-            object : JComboBox<String?>(SingleSelectionComboBoxModel(settings.getColorColumnSelection(), model!!.colorTreeMapColumns)) {
+            object : JComboBox<String?>(SingleSelectionComboBoxModel(settings.getColorColumnSelection(), model!!.colorColumns)) {
                 override fun getMaximumSize(): Dimension {
                     return super.getPreferredSize()
                 }
