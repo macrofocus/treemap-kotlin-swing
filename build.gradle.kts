@@ -27,7 +27,9 @@ java {
 val frameworkAttribute = Attribute.of("mkui", String::class.java)
 configurations.all {
     afterEvaluate {
-        attributes.attribute(frameworkAttribute, "swing")
+        if (swingEnabled != "false") {
+            attributes.attribute(frameworkAttribute, "swing")
+        }
     }
 }
 
