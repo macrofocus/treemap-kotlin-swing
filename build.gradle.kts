@@ -33,7 +33,7 @@ configurations.all {
 
 dependencies {
     val localDependencies: String? by project
-    if(localDependencies == null || localDependencies.toBoolean()) {
+    if(localDependencies != null && localDependencies.toBoolean()) {
         implementation(project(":macrofocus-common"))
         implementation(project(":molap"))
         implementation(project(":mkui"))
