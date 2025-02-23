@@ -20,8 +20,8 @@ repositories {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 val frameworkAttribute = Attribute.of("mkui", String::class.java)
@@ -51,6 +51,12 @@ application {
     mainClass.set("Demo")
 }
 
+tasks.named("distZip") {
+    dependsOn(":treemap:dokkaHtml")
+}
+tasks.named("distTar") {
+    dependsOn(":treemap:dokkaHtml")
+}
 distributions {
     main {
 //        distributionBaseName.set("someName")
