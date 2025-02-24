@@ -9,6 +9,13 @@ plugins {
 //    localProperties.inputStream().use { local.load(it) }
 //}
 
+tasks.compileJava {
+    options.release.set(21)
+}
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>().configureEach {
+    compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+}
+
 repositories {
     maven { url = uri("https://www.macrofocus.com/archiva/repository/public/") }
     maven { url = uri("https://www.macrofocus.com/archiva/repository/snapshots/") }
@@ -20,8 +27,8 @@ repositories {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 val frameworkAttribute = Attribute.of("mkui", String::class.java)
@@ -42,8 +49,8 @@ dependencies {
         val macrofocusVersion: String by project
         implementation("org.macrofocus:macrofocus-common:$macrofocusVersion")
         implementation("org.molap:molap:$macrofocusVersion")
-        implementation("org.mkui:mkui:$macrofocusVersion")
-        implementation("com.treemap:treemap:$macrofocusVersion")
+        implementation("org.mkui:mkui-swing:$macrofocusVersion")
+        implementation("com.treemap:treemap-swing:$macrofocusVersion")
     }
 }
 
@@ -51,12 +58,6 @@ application {
     mainClass.set("Demo")
 }
 
-tasks.named("distZip") {
-    dependsOn(":treemap:dokkaHtml")
-}
-tasks.named("distTar") {
-    dependsOn(":treemap:dokkaHtml")
-}
 distributions {
     main {
 //        distributionBaseName.set("someName")
@@ -67,9 +68,9 @@ distributions {
             }
 
 //            from("TreeMap API for Kotlin-Swing Developer Guide.pdf")
-            from("../treemap/build/dokka/html/") {
-                into("dokka")
-            }
+//            from("../treemap/build/dokka/html/") {
+//                into("dokka")
+//            }
         }
     }
 }
