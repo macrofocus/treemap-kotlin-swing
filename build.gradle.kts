@@ -17,8 +17,8 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>().configureEa
 }
 
 repositories {
-    maven { url = uri("https://www.macrofocus.com/archiva/repository/public/") }
-    maven { url = uri("https://www.macrofocus.com/archiva/repository/snapshots/") }
+    maven { url = uri("https://archiva.macrofocus.com/repository/public/") }
+    maven { url = uri("https://archiva.macrofocus.com/repository/snapshots/") }
     mavenCentral()
 
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev/")
