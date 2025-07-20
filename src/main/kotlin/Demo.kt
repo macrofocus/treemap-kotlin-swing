@@ -1,5 +1,4 @@
 import com.treemap.*
-import com.treemap.AlgorithmFactory.Companion.getInstance
 import com.treemap.RenderingFactory.Companion.FLAT
 import org.mkui.font.crossplatform.CPFont
 import org.mkui.labeling.EnhancedLabel
@@ -127,7 +126,8 @@ object Demo {
 
     private fun createAlgorithmComboBox(settings: TreeMapColumnSettings): JComboBox<Algorithm> {
         val algorithmComboBox: JComboBox<Algorithm> =
-            object : JComboBox<Algorithm>(SingleSelectionComboBoxModel(settings.getAlgorithmProperty(), getInstance().getAlgorithms())) {
+            object : JComboBox<Algorithm>(SingleSelectionComboBoxModel(settings.getAlgorithmProperty(),
+                AlgorithmFactory.instance.getAlgorithms())) {
                 override fun getMaximumSize(): Dimension {
                     return super.getPreferredSize()
                 }
