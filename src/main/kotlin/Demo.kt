@@ -94,37 +94,47 @@ object Demo {
         return groupBy
     }
 
+    /**
+     * A component under a title. The border is set on a panel around the component rather than on the component: the
+     * macOS look and feel ignores the border of a JComboBox, which then collapses under its title.
+     */
+    private fun titled(title: String, component: JComponent): JComponent {
+        val panel = object : JPanel(BorderLayout()) {
+            override fun getMaximumSize(): Dimension = Dimension(Int.MAX_VALUE, preferredSize.height)
+        }
+        panel.border = BorderFactory.createTitledBorder(title)
+        panel.add(component)
+        panel.alignmentX = 0f
+        return panel
+    }
+
     private fun createSizeComboBox(
         model: TreeMapModel<AbstractTreeMapNode<Int, String>, Int, String>?,
         settings: TreeMapSettings<String>
-    ): JComboBox<String?> {
+    ): JComponent {
         val sizeComboBox: JComboBox<String?> =
             object : JComboBox<String?>(SingleSelectionComboBoxModel(settings.getSizeColumnSelection(), model!!.sizeColumns)) {
                 override fun getMaximumSize(): Dimension {
                     return super.getPreferredSize()
                 }
             }
-        sizeComboBox.border = BorderFactory.createTitledBorder("Size")
-        sizeComboBox.alignmentX = 0f
-        return sizeComboBox
+        return titled("Size", sizeComboBox)
     }
 
     private fun createColorComboBox(
         model: TreeMapModel<AbstractTreeMapNode<Int, String>, Int, String>?,
         settings: TreeMapSettings<String>
-    ): JComboBox<String?> {
+    ): JComponent {
         val sizeComboBox: JComboBox<String?> =
             object : JComboBox<String?>(SingleSelectionComboBoxModel(settings.getColorColumnSelection(), model!!.colorColumns)) {
                 override fun getMaximumSize(): Dimension {
                     return super.getPreferredSize()
                 }
             }
-        sizeComboBox.border = BorderFactory.createTitledBorder("Size")
-        sizeComboBox.alignmentX = 0f
-        return sizeComboBox
+        return titled("Color", sizeComboBox)
     }
 
-    private fun createAlgorithmComboBox(settings: TreeMapColumnSettings): JComboBox<Algorithm> {
+    private fun createAlgorithmComboBox(settings: TreeMapColumnSettings): JComponent {
         val algorithmComboBox: JComboBox<Algorithm> =
             object : JComboBox<Algorithm>(SingleSelectionComboBoxModel(settings.getAlgorithmProperty(),
                 AlgorithmFactory.instance.getAlgorithms())) {
@@ -132,20 +142,16 @@ object Demo {
                     return super.getPreferredSize()
                 }
             }
-        algorithmComboBox.border = BorderFactory.createTitledBorder("Algorithm")
-        algorithmComboBox.alignmentX = 0f
-        return algorithmComboBox
+        return titled("Algorithm", algorithmComboBox)
     }
 
-    private fun createRenderingComboBox(settings: TreeMapSettings<String>): JComboBox<Rendering?> {
+    private fun createRenderingComboBox(settings: TreeMapSettings<String>): JComponent {
         val renderingComboBox: JComboBox<Rendering?> =
             object : JComboBox<Rendering?>(SingleSelectionComboBoxModel(settings.renderingSelection, RenderingFactory.instance.getRenderings())) {
                 override fun getMaximumSize(): Dimension {
                     return super.getPreferredSize()
                 }
             }
-        renderingComboBox.border = BorderFactory.createTitledBorder("Rendering")
-        renderingComboBox.alignmentX = 0f
-        return renderingComboBox
+        return titled("Rendering", renderingComboBox)
     }
 }
